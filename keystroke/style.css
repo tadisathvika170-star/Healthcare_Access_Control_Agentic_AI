@@ -1,0 +1,141 @@
+/*
+style.css
+
+Styles for the keystroke authentication page.
+*/
+
+body {
+
+    margin: 0;
+
+    padding: 0;
+
+    background: #f4f6f9;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.container {
+
+    width: 600px;
+
+    margin: 50px auto;
+
+    background: white;
+
+    border-radius: 12px;
+
+    padding: 30px;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+
+    text-align: center;
+
+}
+
+h2 {
+
+    color: #1976d2;
+
+    margin-bottom: 10px;
+
+}
+
+h3 {
+
+    color: #444;
+
+    margin-bottom: 20px;
+
+}
+
+#phrase {
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    color: #d32f2f;
+
+    margin: 20px 0;
+
+    letter-spacing: 2px;
+
+}
+
+#typingBox {
+
+    width: 90%;
+
+    padding: 12px;
+
+    font-size: 18px;
+
+    border: 2px solid #1976d2;
+
+    border-radius: 8px;
+
+    outline: none;
+
+}
+
+#typingBox:focus {
+
+    border-color: #0d47a1;
+
+}
+
+button {
+
+    margin: 15px 10px;
+
+    padding: 10px 25px;
+
+    font-size: 16px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    color: white;
+
+}
+
+#clearButton {
+
+    background: #f57c00;
+
+}
+
+#clearButton:hover {
+
+    background: #ef6c00;
+
+}
+
+#submitButton {
+
+    background: #2e7d32;
+
+}
+
+#submitButton:hover {
+
+    background: #1b5e20;
+
+}
+
+#status {
+
+    margin-top: 20px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    color: #444;
+
+}

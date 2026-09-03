@@ -1,0 +1,125 @@
+/* ==========================================================
+   Healthcare Access Control - Global Styles
+========================================================== */
+
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #20c997;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --background-color: #eef5fb;
+    --card-background: #ffffff;
+    --text-color: #2c3e50;
+    --border-radius: 12px;
+}
+
+/* ==========================================================
+   Body
+========================================================== */
+
+body {
+    background: var(--background-color);
+    color: var(--text-color);
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* ==========================================================
+   Main Container
+========================================================== */
+
+.main {
+    padding: 2rem;
+}
+
+/* ==========================================================
+   Titles
+========================================================== */
+
+h1, h2, h3 {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+h4, h5, h6 {
+    color: var(--dark-color);
+}
+
+/* ==========================================================
+   Cards
+========================================================== */
+
+.card {
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 3px 12px rgba(0,0,0,0.08);
+}
+
+/* ==========================================================
+   Buttons
+========================================================== */
+
+.stButton > button {
+    width: 100%;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    border: none;
+    transition: 0.3s;
+}
+
+.stButton > button:hover {
+    background-color: #0b5ed7;
+}
+
+/* ==========================================================
+   Text Inputs
+========================================================== */
+
+.stTextInput input {
+    border-radius: 8px;
+}
+
+/* ==========================================================
+   Select Boxes
+========================================================== */
+
+.stSelectbox div {
+    border-radius: 8px;
+}
+
+/* ==========================================================
+   Sidebar
+========================================================== */
+
+section[data-testid="stSidebar"] {
+    background: #e9f2ff;
+}
+
+/* ==========================================================
+   Success / Error
+========================================================== */
+
+.stSuccess {
+    border-radius: 8px;
+}
+
+.stError {
+    border-radius: 8px;
+}
+
+/* ==========================================================
+   Footer
+========================================================== */
+
+footer {
+    visibility: hidden;
+}
+
+#MainMenu {
+    visibility: hidden;
+}

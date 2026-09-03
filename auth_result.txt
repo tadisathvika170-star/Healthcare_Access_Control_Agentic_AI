@@ -1,0 +1,20 @@
+======================================================================
+HEALTHCARE ACCESS CONTROL - AUTHENTICATION EVALUATION
+======================================================================
+
+Loading test dataset...
+Loading dataset...
+Dataset Shape : (20400, 34)
+Shape after removing missing values : (20400, 34)
+Scaler saved.
+Label Encoder saved.
+
+Training Samples : 16320
+Testing Samples  : 4080
+Test Samples : 4080
+
+Loading LSTM + GRU Fusion Predictor...
+Predictor loaded successfully.
+
+Evaluating authentication...
+

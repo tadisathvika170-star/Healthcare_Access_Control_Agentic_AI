@@ -1,0 +1,13 @@
+streamlit
+numpy
+pandas
+scikit-learn
+torch
+torchvision
+torchaudio
+joblib
+bcrypt
+matplotlib
+plotly
+openpyxl
+tqdm
