@@ -1,7 +1,7 @@
-﻿(function () {
+(function () {
     "use strict";
 
-    const REQUIRED_REPETITIONS = 10;
+    const REQUIRED_REPETITIONS = 3;
     const REQUIRED_PHRASE = ".tie5Roanl";
 
     const input = document.getElementById("typingInput");
@@ -105,7 +105,7 @@
         } else {
 
             statusElement.textContent =
-                "All 10 repetitions recorded. Click Submit.";
+                "All 3 repetitions recorded. Click Submit.";
         }
 
         setFrameHeight();
@@ -128,10 +128,6 @@
 
         if (event.key === "Shift") {
             return "Shift";
-        }
-
-        if (/^[a-zA-Z]$/.test(event.key)) {
-            return event.key.toLowerCase();
         }
 
         return event.key;
@@ -242,7 +238,7 @@
             keyDownTimes = {};
             repetitions = 0;
 
-            counterElement.textContent = "0 / 10";
+            counterElement.textContent = "0 / 3";
 
             submitButton.disabled = true;
 
@@ -273,10 +269,10 @@
                 });
 
 
-            if (lines.length !== REQUIRED_REPETITIONS) {
+            if (lines.length !== 3) {
 
                 statusElement.textContent =
-                    "Please complete all 10 repetitions first.";
+                    "Please complete all 3 repetitions first.";
 
                 return;
             }
@@ -366,7 +362,7 @@
     // INITIALIZE
     // =========================================================
 
-    counterElement.textContent = "0 / 10";
+    counterElement.textContent = "0 / 3";
 
     submitButton.disabled = true;
 
@@ -382,6 +378,3 @@
     );
 
 })();
-
-
-

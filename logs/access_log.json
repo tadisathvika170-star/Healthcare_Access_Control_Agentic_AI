@@ -1,0 +1,83 @@
+[
+    {
+        "timestamp": "2026-09-04T17:21:01.532511",
+        "predicted_user": 0,
+        "confidence": 0.95,
+        "role": "doctor",
+        "requested_resource": "patient_records",
+        "decision": "GRANT",
+        "reason": "User has the 'doctor' role and is authorized for this resource."
+    },
+    {
+        "timestamp": "2026-09-04T17:22:38.264275",
+        "predicted_user": 0,
+        "confidence": 0.95,
+        "role": "doctor",
+        "requested_resource": "patient_records",
+        "decision": "GRANT",
+        "reason": "User has the 'doctor' role and is authorized for this resource."
+    },
+    {
+        "timestamp": "2026-09-04T17:22:38.275132",
+        "predicted_user": 5,
+        "confidence": 0.93,
+        "role": "nurse",
+        "requested_resource": "clinical_records",
+        "decision": "GRANT",
+        "reason": "User has the 'nurse' role and is authorized for this resource."
+    },
+    {
+        "timestamp": "2026-09-04T17:22:38.283717",
+        "predicted_user": 5,
+        "confidence": 0.94,
+        "role": "nurse",
+        "requested_resource": "system_settings",
+        "decision": "DENY",
+        "reason": "Role 'nurse' does not have permission for this resource."
+    },
+    {
+        "timestamp": "2026-09-04T17:22:38.293542",
+        "predicted_user": 15,
+        "confidence": 0.97,
+        "role": "administrator",
+        "requested_resource": "audit_logs",
+        "decision": "GRANT",
+        "reason": "User has the 'administrator' role and is authorized for this resource."
+    },
+    {
+        "timestamp": "2026-09-04T17:22:38.302294",
+        "predicted_user": 20,
+        "confidence": 0.91,
+        "role": "researcher",
+        "requested_resource": "research_data",
+        "decision": "GRANT",
+        "reason": "User has the 'researcher' role and is authorized for this resource."
+    },
+    {
+        "timestamp": "2026-09-04T17:22:38.311421",
+        "predicted_user": 20,
+        "confidence": 0.92,
+        "role": "researcher",
+        "requested_resource": "patient_records",
+        "decision": "DENY",
+        "reason": "Role 'researcher' does not have permission for this resource."
+    },
+    {
+        "timestamp": "2026-09-04T17:22:38.323175",
+        "predicted_user": 99,
+        "confidence": 0.95,
+        "role": "unknown",
+        "requested_resource": "patient_records",
+        "decision": "DENY",
+        "reason": "User is not registered in the authorization system."
+    },
+    {
+        "timestamp": "2026-09-04T17:22:38.333874",
+        "predicted_user": 0,
+        "confidence": 0.55,
+        "role": "unknown",
+        "requested_resource": "patient_records",
+        "decision": "DENY",
+        "reason": "Identity confidence is below the required threshold."
+    }
+]

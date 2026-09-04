@@ -1,0 +1,12 @@
+Best GRU Configuration
+======================
+
+name: GRU_128_L1
+hidden_size: 128
+num_layers: 1
+dropout: 0.2
+learning_rate: 0.001
+weight_decay: 0.0
+
+Best Validation Accuracy: 96.41%
+Final Test Accuracy: 87.06%

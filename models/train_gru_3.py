@@ -1,7 +1,8 @@
 """
-train_lstm.py
+train_gru_3.py
 
-Train LSTM using 3-repetition sequences.
+Train Feature-Enhanced GRU using
+3-repetition sequences.
 """
 
 import copy
@@ -13,7 +14,7 @@ import torch.nn as nn
 from sklearn.metrics import accuracy_score
 from torch.utils.data import DataLoader, TensorDataset
 
-from models.lstm_model import LSTMModel
+from models.gru_model import FeatureEnhancedGRU
 
 
 # ==========================================================
@@ -22,13 +23,14 @@ from models.lstm_model import LSTMModel
 
 BATCH_SIZE = 32
 LEARNING_RATE = 0.001
+WEIGHT_DECAY = 0.0001
 EPOCHS = 30
 
 SEQUENCE_LENGTH = 3
 INPUT_SIZE = 31
 NUM_CLASSES = 51
 
-MODEL_PATH = "models/lstm_model.pth"
+MODEL_PATH = "models/gru_model.pth"
 
 
 # ==========================================================
@@ -43,7 +45,7 @@ device = torch.device(
 
 
 print("=" * 70)
-print("3-REPETITION LSTM TRAINING")
+print("3-REPETITION FEATURE-ENHANCED GRU TRAINING")
 print("=" * 70)
 
 print(
@@ -149,32 +151,53 @@ test_loader = DataLoader(
 # MODEL
 # ==========================================================
 
-model = LSTMModel(
+model = FeatureEnhancedGRU(
     input_size=31,
-    hidden_size=64,
-    num_layers=2,
+    hidden_size=128,
+    num_layers=1,
     num_classes=NUM_CLASSES,
-    dropout=0.2,
+    dropout=0.0,
 ).to(device)
 
 
 # ==========================================================
-# LOSS / OPTIMIZER
+# LOSS
 # ==========================================================
 
-criterion = nn.CrossEntropyLoss()
-
-optimizer = torch.optim.Adam(
-    model.parameters(),
-    lr=LEARNING_RATE
+criterion = nn.CrossEntropyLoss(
+    label_smoothing=0.05
 )
 
 
 # ==========================================================
-# TRAINING
+# OPTIMIZER
+# ==========================================================
+
+optimizer = torch.optim.AdamW(
+    model.parameters(),
+    lr=LEARNING_RATE,
+    weight_decay=WEIGHT_DECAY
+)
+
+
+# ==========================================================
+# SCHEDULER
+# ==========================================================
+
+scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+    optimizer,
+    mode="max",
+    factor=0.5,
+    patience=3
+)
+
+
+# ==========================================================
+# TRAIN
 # ==========================================================
 
 best_accuracy = 0.0
+
 best_model = copy.deepcopy(
     model.state_dict()
 )
@@ -186,10 +209,10 @@ for epoch in range(EPOCHS):
 
     model.train()
 
+    running_loss = 0.0
+
     train_predictions = []
     train_labels = []
-
-    running_loss = 0.0
 
 
     for inputs, labels in train_loader:
@@ -217,7 +240,6 @@ for epoch in range(EPOCHS):
 
         optimizer.step()
 
-
         running_loss += loss.item()
 
 
@@ -242,13 +264,15 @@ for epoch in range(EPOCHS):
 
 
     # ======================================================
-    # VALIDATION
+    # TEST / VALIDATION
     # ======================================================
 
     model.eval()
 
     test_predictions = []
     test_labels = []
+
+    test_loss = 0.0
 
 
     with torch.no_grad():
@@ -261,6 +285,14 @@ for epoch in range(EPOCHS):
             outputs = model(
                 inputs
             )
+
+            loss = criterion(
+                outputs,
+                labels
+            )
+
+            test_loss += loss.item()
+
 
             predictions = torch.argmax(
                 outputs,
@@ -282,6 +314,11 @@ for epoch in range(EPOCHS):
     )
 
 
+    scheduler.step(
+        test_accuracy
+    )
+
+
     if test_accuracy > best_accuracy:
 
         best_accuracy = test_accuracy
@@ -291,16 +328,21 @@ for epoch in range(EPOCHS):
         )
 
 
+    current_lr = optimizer.param_groups[0]["lr"]
+
+
     print(
         f"Epoch {epoch + 1:02d}/{EPOCHS} | "
-        f"Loss: {running_loss:.4f} | "
+        f"Train Loss: {running_loss:.4f} | "
         f"Train Acc: {train_accuracy * 100:.2f}% | "
-        f"Test Acc: {test_accuracy * 100:.2f}%"
+        f"Test Loss: {test_loss:.4f} | "
+        f"Test Acc: {test_accuracy * 100:.2f}% | "
+        f"LR: {current_lr:.6f}"
     )
 
 
 # ==========================================================
-# SAVE
+# SAVE BEST MODEL
 # ==========================================================
 
 model.load_state_dict(
@@ -320,7 +362,7 @@ training_time = (
 
 
 print("\n" + "=" * 70)
-print("LSTM TRAINING COMPLETED")
+print("GRU TRAINING COMPLETED")
 print("=" * 70)
 
 print(

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            font-family: -apple-system, BlinkMacSystemFont,
+                         "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            background: transparent;
+        }
+
+        .typing-box {
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #d9dce3;
+            border-radius: 8px;
+            background: #ffffff;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 110px;
+            padding: 14px;
+
+            resize: vertical;
+
+            border: 1px solid #c9ced8;
+            border-radius: 6px;
+
+            font-size: 16px;
+            line-height: 1.6;
+            font-family: monospace;
+
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #4b7bec;
+            box-shadow: 0 0 0 1px #4b7bec;
+        }
+
+        .bottom-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 12px;
+        }
+
+        .counter {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 8px 18px;
+            border-radius: 6px;
+            border: 1px solid #c7ccd5;
+            background: white;
+            color: #333;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #f4f5f7;
+        }
+
+        button.submit {
+            background: #1f77d0;
+            color: white;
+            border-color: #1f77d0;
+        }
+
+        button.submit:hover {
+            background: #1768ba;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .status {
+            margin-top: 10px;
+            min-height: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="typing-box">
+
+        <textarea
+            id="typingInput"
+            placeholder="Type .tie5Roanl 3 times and press Enter after each repetition..."
+            autocomplete="off"
+            spellcheck="false"
+        ></textarea>
+
+        <div class="bottom-row">
+
+            <div class="counter">
+                Repetitions:
+                <strong id="counter">0 / 3</strong>
+            </div>
+
+            <div class="buttons">
+
+                <button
+                    id="clearButton"
+                    type="button">
+                    Clear
+                </button>
+
+                <button
+                    id="submitButton"
+                    class="submit"
+                    type="button"
+                    disabled>
+                    Submit
+                </button>
+
+            </div>
+
+        </div>
+
+        <div id="status" class="status">
+            Start typing the phrase.
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
