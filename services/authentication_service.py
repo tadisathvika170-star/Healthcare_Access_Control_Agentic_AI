@@ -17,22 +17,26 @@ Suspicious login:
 """
 
 from authentication.auth_manager import AuthManager
-from predict.predictor import Predictor
 
 
 class AuthenticationService:
 
     """
     Handles authentication.
-    Keystroke verification is performed only
-    when additional verification is required.
+
+    IMPORTANT:
+    The LSTM/GRU prediction stack is loaded lazily. This keeps
+    the Login/Register screen fast and loads the heavy biometric
+    models only when keystroke verification is actually required.
     """
 
     def __init__(self):
 
         self.auth_manager = AuthManager()
 
-        self.predictor = Predictor()
+        # Do not load Predictor during normal application startup.
+        # It loads the LSTM/GRU fusion models and can take time.
+        self.predictor = None
 
     # ======================================================
     # Normal Username + Password Login
@@ -140,6 +144,14 @@ class AuthenticationService:
         username,
         features
     ):
+
+        # Load the heavy prediction stack only when biometric
+        # verification is actually requested.
+        if self.predictor is None:
+
+            from predict.predictor import Predictor
+
+            self.predictor = Predictor()
 
         result = self.predictor.predict(
             features
