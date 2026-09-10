@@ -1,11 +1,8 @@
-@'
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <title>Healthcare Keystroke Verification</title>
-
     <style>
         body {
             margin: 0;
@@ -14,24 +11,17 @@
             background: white;
             color: #222;
         }
-
-        .container {
-            width: 100%;
-            box-sizing: border-box;
-        }
-
+        .container { width: 100%; box-sizing: border-box; }
         .title {
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 8px;
         }
-
         .instruction {
             font-size: 14px;
             color: #555;
             margin-bottom: 12px;
         }
-
         .phrase {
             display: inline-block;
             padding: 8px 12px;
@@ -41,7 +31,6 @@
             font-weight: bold;
             margin-bottom: 12px;
         }
-
         textarea {
             width: 100%;
             min-height: 110px;
@@ -54,17 +43,12 @@
             font-size: 14px;
             outline: none;
         }
-
-        textarea:focus {
-            border-color: #888;
-        }
-
+        textarea:focus { border-color: #888; }
         .controls {
             display: flex;
             gap: 10px;
             margin-top: 10px;
         }
-
         button {
             padding: 8px 16px;
             border: none;
@@ -72,93 +56,39 @@
             cursor: pointer;
             font-size: 14px;
         }
-
-        #submitButton {
-            background: #166534;
-            color: white;
-        }
-
-        #clearButton {
-            background: #e5e7eb;
-            color: #333;
-        }
-
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .counter {
-            margin-top: 12px;
-            font-size: 14px;
-        }
-
-        .status {
-            margin-top: 8px;
-            font-size: 14px;
-            min-height: 20px;
-        }
-
-        .help {
-            margin-top: 10px;
-            font-size: 12px;
-            color: #666;
-        }
+        #submitButton { background: #166534; color: white; }
+        #clearButton { background: #e5e7eb; color: #333; }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .counter { margin-top: 12px; font-size: 14px; }
+        .status { margin-top: 8px; font-size: 14px; min-height: 20px; }
+        .help { margin-top: 10px; font-size: 12px; color: #666; }
     </style>
 </head>
-
 <body>
-
 <div class="container">
-
-    <div class="title">
-        Behavioral Biometric Verification
-    </div>
-
+    <div class="title">Behavioral Biometric Verification</div>
     <div class="instruction">
-        Type the phrase exactly 10 times and press Enter after every repetition.
+        Type the phrase exactly 1 time and press Enter after the repetition.
     </div>
-
-    <div class="phrase">
-        .tie5Roanl
-    </div>
-
+    <div class="phrase">.tie5Roanl</div>
     <textarea
         id="typingInput"
-        placeholder="Type .tie5Roanl 10 times and press Enter after each repetition..."
+        placeholder="Type .tie5Roanl 1 time and press Enter..."
         autocomplete="off"
         autocorrect="off"
         autocapitalize="off"
         spellcheck="false"
     ></textarea>
-
     <div class="controls">
-        <button id="clearButton" type="button">
-            Clear
-        </button>
-
-        <button id="submitButton" type="button" disabled>
-            Submit
-        </button>
+        <button id="clearButton" type="button">Clear</button>
+        <button id="submitButton" type="button" disabled>Submit</button>
     </div>
-
     <div class="counter">
-        Repetitions:
-        <strong id="counter">0 / 10</strong>
+        Repetitions: <strong id="counter">0 / 1</strong>
     </div>
-
-    <div id="status" class="status">
-        Start typing the phrase.
-    </div>
-
-    <div class="help">
-        Press Enter after each complete phrase. Exactly 10 repetitions are required.
-    </div>
-
+    <div id="status" class="status">Start typing the phrase.</div>
+    <div class="help">Press Enter after the complete phrase. Exactly 1 repetition is required.</div>
 </div>
-
 <script src="script.js"></script>
-
 </body>
 </html>
-'@ | Set-Content -Path keystroke\index.html -Encoding UTF8
