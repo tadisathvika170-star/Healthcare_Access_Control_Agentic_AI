@@ -146,6 +146,6 @@ class KeystrokePage:
         st.code(".tie5Roanl")
         st.write("Press Enter after the repetition.")
 
-        component_result = self.component.render(key="healthcare_keystroke_capture")
+        component_result = self.component.render(key="healthcare_keystroke_capture_v2")
         if component_result:
             self.process_submission(component_result, username, verification_mode)
