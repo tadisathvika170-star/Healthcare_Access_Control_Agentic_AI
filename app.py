@@ -9,9 +9,14 @@ Optimized version:
 - Page objects are created only when needed.
 - Existing login, dashboard, profile, admin, audit logs,
   settings, and patient verification flows are preserved.
+- Single-verification UI is used for browser keystroke authentication.
 """
 
 import streamlit as st
+
+# Deployment marker: forces the connected Streamlit deployment to pick up
+# the current one-repetition keystroke authentication implementation.
+APP_VERSION = "single-keystroke-verification-v2"
 
 st.set_page_config(
     page_title="Healthcare Access Control",
