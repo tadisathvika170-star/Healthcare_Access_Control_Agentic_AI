@@ -58,7 +58,8 @@
 
     function normalizeKey(event) {
         if (event.key === " ") return "Space";
-        if (event.key === "Enter") return "Enter";
+        // Dataset feature extractor expects the final Enter key as Return.
+        if (event.key === "Enter") return "Return";
         if (event.key === "Shift") return "Shift";
         if (/^[a-zA-Z]$/.test(event.key)) return event.key.toLowerCase();
         return event.key;
